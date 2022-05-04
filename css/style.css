@@ -1,0 +1,187 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(192, 192, 192);
+    color: white;
+    font-size: 1vh;
+}
+
+header {
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(60, 57, 223);
+}
+
+/* Nav-Bar */
+#league {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.btn-league {
+    background: white;
+    border: none;
+    padding: 5px;
+}
+
+.btn-league:not(:first-child) {
+    border-left: 1px solid black;
+}
+
+.btn-league:hover {
+    cursor: pointer;
+}
+
+.logo-league {
+    width: 50%;
+}
+
+/* Fin Nav-Bar */
+
+/* Classement */
+#standings {
+    display: grid;
+    grid-template-rows: repeat(2);
+    gap: 5px;
+    margin: 1%;
+    padding: 5px;
+    background-color: rgb(90, 90, 90);
+}
+
+#description,
+.team-info,
+.points {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#description,
+#teams {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 5px;
+}
+
+#details,
+.points {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+}
+
+#details li,
+.points p,
+.rank {
+    margin: 0 auto;
+}
+
+.team-info {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+}
+
+.logo {
+    width: 80%;
+    margin: 0 auto;
+    grid-column: 2/4;
+}
+
+.team-name {
+    grid-column: 4/11;
+    padding-left: 10px;
+}
+
+#details li:first-child,
+.points p:first-child {
+    font-weight: bold;
+}
+
+/* Fin Classement */
+
+/* Rencontres */
+#matchs {
+    display: grid;
+    grid-template-rows: repeat(2);
+    align-items: center;
+    row-gap: 5px;
+    margin: 1%;
+}
+
+#date {
+    padding: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+#all-matchs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.match {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgb(90, 90, 90);
+}
+
+.date {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2px 0 2px 0;
+}
+
+.team-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 5px 0;
+}
+
+.team-vs,
+.venue {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.home,
+.away {
+    gap: 5px;
+}
+
+.home img,
+.away img {
+    width: 40%;
+}
+
+.home p:last-child,
+.away p:last-child {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.home,
+.vs,
+.away,
+.venue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vs {
+    padding: 10px;
+    margin: 0 20px 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    font-weight: bold;
+}

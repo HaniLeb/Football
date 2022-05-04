@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>100%Foot</title>
+    <script src="JS/callApi.js" defer></script>
+    <script src="JS/classData.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>100%Foot</h1>
+    </header>
+
+    <nav>
+        <div id="league">
+            <button class="btn-league" data-league="39">
+                <img class="logo-league" src="logos/Premier_League.png" alt="">
+            </button>
+            <button class="btn-league" data-league="140">
+                <img class="logo-league" src="logos/LaLiga_Santander.png" alt="">
+            </button>
+            <button class="btn-league" data-league="78">
+                <img class="logo-league" src="logos/Bundesliga.png" alt="">
+            </button>
+            <button class="btn-league" data-league="135">
+                <img class="logo-league" src="logos/Serie_A.png" alt="">
+            </button>
+            <button class="btn-league" data-league="61">
+                <img class="logo-league" src="logos/Ligue_1.png" alt="">
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Classement -->
+        <section id="standings">
+            <div id="description">
+                <div id="club">
+                    <p>Club</p>
+                </div>
+
+                <ol id="details">
+                    <li>Pts</li>
+                    <li>J</li>
+                    <li>G</li>
+                    <li>N</li>
+                    <li>P</li>
+                    <li>BP</li>
+                    <li>BC</li>
+                    <li>DB</li>
+                </ol>
+            </div>
+        </section>
+        <!-- Fin Classement -->
+
+        <!-- Matchs à venir -->
+        <section id="matchs">
+            <!-- <div id="date">
+                <select name="date" id="date-select">
+                </select>
+            </div> -->
+        </section>
+        <!-- Fin Matchs à venir -->
+    </main>
+
+    <footer>
+        <p>100%Footer</p>
+    </footer>
+</body>
+
+</html>
