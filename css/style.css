@@ -49,6 +49,7 @@ header {
 
 /* Classement */
 #standings {
+    height: fit-content;
     display: grid;
     grid-template-rows: repeat(2);
     gap: 5px;
@@ -164,7 +165,7 @@ header {
 
 .home p:last-child,
 .away p:last-child {
-    padding: 20px;
+    padding: 5px;
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -184,4 +185,20 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 100%;
     font-weight: bold;
+}
+
+@media screen and (min-width: 1000px) {
+    .logo-league {
+        width: 10%;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo {
+        width: 45%;
+    }
+
 }
