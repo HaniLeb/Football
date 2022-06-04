@@ -1,9 +1,14 @@
 'use strict'
+
 const buttons = document.querySelectorAll('#league button');
-// const date_select = document.getElementById('date-select');
-const standingsDiv = document.getElementById('standings');
-const matchsSection = document.getElementById('matchs');
+const div_standings = document.getElementById('standings');
+const matches_section = document.getElementById('matchs');
 const teams = document.getElementById('teams');
+const type_data = ['standings', 'fixtures'];
+const date_select = document.getElementById('date-select');
+
+let id = '';
+let day_select;
 
 const options = {
     method: 'GET',
@@ -13,48 +18,79 @@ const options = {
     }
 }
 
+// Fonction asynchrone qui appelle une api et retourne un objet json
 async function callApi(type, id) {
-    const response = await fetch(`https://api-football-beta.p.rapidapi.com/${type}?season=2021&league=${id}`, options);
-    if (response.ok) {
-        return response.json();
+    try {
+        const resp = await fetch(`https://api-football-beta.p.rapidapi.com/${type}?season=2021&league=${id}`, options);
+        if (resp.ok) {
+            return resp.json();
+        }
+        throw new Error(`${resp.statusText} ${resp.status}`);
+    } catch (err) {
+        console.error(err);
     }
-    throw new Error(`${response.statusText} ${response.status}`);
 }
 
-function apiPara(type, idApi, id, newId) {
-    callApi(type, idApi).then(data => {
-        dataReturn(data, id, newId);
+// Fonction qui récupère en paramètre le type de requête et id et les passe en paramètre aux fonctions callApi() et data()
+function paramOfApi(type, idLeague, id, newId) {
+    callApi(type, idLeague).then(data => {
+        get_data(data, id, newId);
     })
 }
 
-function dataReturn(data, id, newId) {
-    console.log(data);
-
-    switch (data.get) {
-        case "standings":
-            const league = new Data(data.response[0].league, id, newId);
-            league.standings();
+// Fonction qui récupère en paramètre les données et les id et instancie des objets Data()
+function get_data(data, id, newId) {
+    const data_get = data.get;
+    // console.log(data);
+    switch (data_get) {
+        case type_data[0]:
+            const league = new Standings(data.response[0].league, id, newId);
+            league.standingsFunc();
             break;
-        case "fixtures":
-            const matchs = new Data(data.response, id, newId);
-            // matchs.selectDate();
-            matchs.match();
-            break;
+        case type_data[1]:
+            const matchs = new Match(data.response, id, newId);
 
-        default:
+            matchs.optionsDate();
+
+            if (all.childElementCount === 0) {
+                console.log('Veuillez sélectionner une date');
+            }
+
+            // Sélectionne et crée les matchs en fonction de la date du jour
+            for (let i = 0; i < all_matches_dates.length; i++) {
+                day_select = all_matches_dates[i]
+
+                if (all.childElementCount >= 0 && today_date === day_select) {
+                    option.setAttribute('selected', '');
+                    matchs.createMatch(day_select);
+                }
+            }
+
+            // Crée et sélectionne les matchs au moment du click
+            date_select.addEventListener('change', function (e) {
+                // Date sélectionner
+                const optionDay = e.target.value;
+                // console.log(optionDay);
+
+                for (let i = 0; i < all_matches_dates.length; i++) {
+                    day_select = all_matches_dates[i]
+
+                    if (all.childElementCount >= 0 && optionDay === day_select) {
+                        // console.log(day_select);
+                        all.replaceChildren();
+                        matchs.createMatch(day_select);
+                    }
+                }
+            })
             break;
     }
 }
 
 try {
-    const standings = `standings`;
-    const fixtures = `fixtures`;
-    let id = '';
-
-    // Sélection par defaut de la ligue au moment ou il n'y aucun clique
+    // Sélection par defaut de la ligue
     if (id === '') {
-        apiPara(standings, 39, '', '');
-        apiPara(fixtures, 39, '', '');
+        paramOfApi(type_data[0], 39, '', '');
+        paramOfApi(type_data[1], 39, '', '');
     }
     // Selection de la ligue au moment du clique
     buttons.forEach(button => {
@@ -62,14 +98,13 @@ try {
             const newId = button.getAttribute('data-league');
 
             if (newId !== id) {
-                apiPara(standings, newId, '', newId);
-                apiPara(fixtures, newId, '', newId);
-
+                paramOfApi(type_data[0], newId, '', newId);
+                paramOfApi(type_data[1], newId, '', newId);
+                all.replaceChildren();
                 return id = newId;
             }
         })
     })
-
 } catch (e) {
     console.error(e);
 }
