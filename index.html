@@ -1,77 +1,68 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>100%Foot</title>
-    <script src="JS/callApi.js" defer></script>
-    <script src="JS/standings.js" defer></script>
-    <script src="JS/matchs.js" defer></script>
-</head>
-
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet" />
+    <title>100% Foot V2</title>
+  </head>
+  <body>
     <header>
-        <h1>100%Foot</h1>
+      <h1>100%Foot</h1>
     </header>
 
-    <nav>
-        <div id="league">
-            <button class="btn-league" data-league="39">
-                <img class="logo-league" src="logos/Premier_League.png" alt="">
-            </button>
-            <button class="btn-league" data-league="140">
-                <img class="logo-league" src="logos/LaLiga_Santander.png" alt="">
-            </button>
-            <button class="btn-league" data-league="78">
-                <img class="logo-league" src="logos/Bundesliga.png" alt="">
-            </button>
-            <button class="btn-league" data-league="135">
-                <img class="logo-league" src="logos/Serie_A.png" alt="">
-            </button>
-            <button class="btn-league" data-league="61">
-                <img class="logo-league" src="logos/Ligue_1.png" alt="">
-            </button>
-        </div>
+    <nav id="select-btn">
+      <button class="btn-league" data-id="39" data-league="Premier_League">
+        <img class="logo-league" src="Assets/Logos/Premier_League.png" alt="Logo du championnat Anglais" />
+      </button>
+      <button class="btn-league" data-id="140" data-league="La_Liga">
+        <img class="logo-league" src="Assets/Logos/LaLiga_Santander.png" alt="Logo du championnat Espagnole" />
+      </button>
+      <button class="btn-league" data-id="78" data-league="Bundesliga_1">
+        <img class="logo-league" src="Assets/Logos/Bundesliga.png" alt="Logo du championnat Allemand" />
+      </button>
+      <button class="btn-league" data-id="135" data-league="Serie_A">
+        <img class="logo-league" src="Assets/Logos/Serie_A.png" alt="Logo du championnat Italien" />
+      </button>
+      <button class="btn-league" data-id="61" data-league="Ligue_1">
+        <img class="logo-league" src="Assets/Logos/Ligue_1.png" alt="Logo du championnat Français" />
+      </button>
     </nav>
 
     <main>
-        <!-- Classement -->
-        <section id="standings">
-            <div id="description">
-                <div id="club">
-                    <p>Club</p>
-                </div>
+      <section id="standings">
+        <div class="description">
+          <div>
+            <p>Club</p>
+          </div>
+          <div>
+            <p>MJ</p>
+            <p>G</p>
+            <p>N</p>
+            <p>P</p>
+            <p>BP</p>
+            <p>BC</p>
+            <p>DB</p>
+            <p>Pts</p>
+          </div>
+        </div>
 
-                <ol id="details">
-                    <li>Pts</li>
-                    <li>J</li>
-                    <li>G</li>
-                    <li>N</li>
-                    <li>P</li>
-                    <li>BP</li>
-                    <li>BC</li>
-                    <li>DB</li>
-                </ol>
-            </div>
-        </section>
-        <!-- Fin Classement -->
+        <div class="all-standings"></div>
+      </section>
 
-        <!-- Matchs à venir -->
-        <section id="matchs">
-            <div id="date">
-                <select name="date" id="date-select">
-                </select>
-            </div>
-        </section>
-        <!-- Fin Matchs à venir -->
+      <section id="fixtures">
+        <select name="dates" class="day-select"></select>
+        <div class="all-matches"></div>
+      </section>
     </main>
 
-    <footer>
-        <p>100%Footer</p>
-    </footer>
-</body>
-
+    <script src="/JS/fixtures.js"></script>
+    <script src="/JS/standings.js"></script>
+    <script src="/JS/localStorage.js"></script>
+    <script src="/JS/main.js"></script>
+  </body>
 </html>

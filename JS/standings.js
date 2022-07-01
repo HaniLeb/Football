@@ -1,47 +1,35 @@
-'use strict'
-
 class Standings {
-    constructor(data, id, newId) {
-        this.data = data;
-        this.id = id;
-        this.newId = newId;
+  constructor(data) {
+    this.data = data;
+  }
+
+  createStan() {
+    const standings = this.data.response[0].league.standings[0];
+    const div_standings = document.querySelector(".all-standings");
+
+    for (let i = 0; i < standings.length; i++) {
+      const teamInfo = document.createElement("div");
+      const statistics = document.createElement("div");
+
+      teamInfo.className = "team";
+      statistics.className = "points";
+
+      teamInfo.innerHTML = `
+      <p>${standings[i].rank}</p>
+      <img class='logo' src='${standings[i].team.logo}' alt='${standings[i].team.name}'>
+      <p>${standings[i].team.name}</p>`;
+
+      statistics.innerHTML = `
+      <p>${standings[i].all.played}</p>
+      <p>${standings[i].all.win}</p>
+      <p>${standings[i].all.draw}</p>
+      <p>${standings[i].all.lose}</p>
+      <p>${standings[i].all.goals.for}</p>
+      <p>${standings[i].all.goals.against}</p>
+      <p>${standings[i].goalsDiff}</p>
+      <p>${standings[i].points}</p>`;
+
+      div_standings.append(teamInfo, statistics);
     }
-
-    standingsFunc() {
-        const league = this.data.standings[0];
-        const teams = document.createElement('div');
-        teams.id = "teams";
-        // console.log(league);
-
-        if (this.newId !== this.id) {
-            div_standings.lastChild.remove();
-        }
-
-        // console.log(league[i].team.name);
-
-        for (let i = 0; i < league.length; i++) {
-            const teamInfo = document.createElement('div');
-            const liNumbers = document.createElement('div');
-
-            teamInfo.className = 'team-info';
-            teamInfo.innerHTML = `
-            <p class='rank'>${league[i].rank}</p>
-            <img class='logo' src='${league[i].team.logo}'>
-            <p class='team-name'>${league[i].team.name}</p>`;
-
-            liNumbers.className = 'points';
-            liNumbers.innerHTML = `
-            <p>${league[i].all.played}</p>
-            <p>${league[i].all.win}</p>
-            <p>${league[i].all.draw}</p>
-            <p>${league[i].all.lose}</p>
-            <p>${league[i].all.goals.for}</p>
-            <p>${league[i].all.goals.against}</p>
-            <p>${league[i].goalsDiff}</p>
-            <p>${league[i].points}</p>`;
-
-            teams.append(teamInfo, liNumbers);
-            div_standings.appendChild(teams);
-        }
-    }
+  }
 }
