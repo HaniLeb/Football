@@ -6,15 +6,18 @@
 
 body{
     font-family: 'Quantico', Arial, Helvetica, sans-serif;
-    color: white;
+    /* color: black; */
     font-size: 1vh;
-    background-color: rgb(46, 46, 46);
+    background-color: #283040;
 }
 
 header {
+    color: white;
     padding: 10px;
     text-align: center;
-    background-color: rgb(46, 46, 46);
+    background-color: #283040;
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
 }
 
 main{
@@ -23,12 +26,30 @@ main{
 
 #select-btn{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
     width: 100%;
-    height: fit-content;
 }
 
-.btn-league, .logo{
-    width: 100%;
+.btn-league{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 3em;
+    border: none;
+    border-radius: 100px;
+    background-color: #D0D3D9;
+}
+
+.logo-league{
+    width: 2em;
+}
+
+.logo{
+    width: 2em;
 }
 
 .btn-league:hover{
@@ -36,15 +57,13 @@ main{
     background-color: rgb(255, 255, 255);
 }
 
-.logo-league{
-    width: 40%;
-}
-
+/* ---------------------------------------------------------------------------------------------------- */
 #standings, #fixtures{
     margin-bottom: 1rem;
     padding: 1em;
-    border: 1px solid rgba(255, 255, 255, 0.493);
-    background-color: rgba(56, 119, 190, 0.4);
+    border: 1px solid #0B2624;
+    border-radius: 10px;
+    background-color: #D0D3D9;
 }
 
 .description, .all-standings{
@@ -76,8 +95,13 @@ main{
 }
 
 .description, .team, .points, .match{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(3, 3, 3, 0.3);
     padding: 5px 0 5px 0;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+#fixtures{
+    height: fit-content;
 }
 
 .all-matches{
@@ -88,9 +112,10 @@ main{
 }
 
 .day-select{
-    width: 100%;
+    width: 50%;
     height: 30px;
     font-family: 'Quantico', Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
 }
 
 .match{
@@ -142,16 +167,21 @@ main{
     text-align: right;
 }
 
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* TABLETTE */
 @media only screen and (min-width: 800px) {
     body{
         font-size: 1.5em;
     }
 
-    .logo{
-        width: 50%;
+    #select-btn{
+        display: flex;
+        flex-direction: row;
     }
 }
 
+/* DESKTOP */
 @media only screen and (min-width: 1300px) {
     main{
         display: grid;
@@ -159,11 +189,7 @@ main{
         column-gap: 20px;
     }
 
-    .logo-league{
-        width: 15%;
-    }
-
-    .logo{
-        width: 50%;
+    .btn-league{
+        font-size: 1em;
     }
 }
